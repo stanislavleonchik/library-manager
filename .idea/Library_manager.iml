@@ -7,5 +7,6 @@
     <orderEntry type="module" module-name="Student" />
     <orderEntry type="module" module-name="Student_manager" />
     <orderEntry type="module" module-name="Books_manager" />
+    <orderEntry type="module" module-name="Practic_Crypto" />
   </component>
 </module>
