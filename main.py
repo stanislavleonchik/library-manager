@@ -1,13 +1,13 @@
+# region Импорт модулей
 import os
 import pickle # библиотека для сохранения любых типов данных
 from datetime import datetime # класс для работы с датой
 from time import sleep
-
-
+# endregion
 class Library:
+    # region Карточка
     def __init__(self):
         self.card_list = []
-    # region Карточка
     class Card:
         def __init__(
                 self,
@@ -88,10 +88,8 @@ class Library:
         for card in self.card_list:
             if card.date_delivery == datetime(1990, 9, 15):
                 card_owner.append(card.first_name)
-        if len(card_owner) != 0:
-            return(card_owner)
-        else:
-            print('Никто не брал книгу')
+        if len(card_owner) > 0:
+            return card_owner
     def is_order_in_1990(self):
         readers = {}
         for card in self.card_list:
@@ -118,7 +116,7 @@ class Library:
         print("│ •2 Самый маленький срок, за который нашли книгу   │")
         print("│ •3 Cколько заказов было неудовлетворено           │")
         print("│ •4 Вывести того, чаще всего берет книги           │")
-        print("│ •5 Кто книгу взял 15.09.1990                      │")
+        print("│ •5 Кто получил книгу  15.09.1990                  │")
         print("│ •6 Сколько человек заказывали книги 25.04.1990    │")
         print('├', '—' * 51, '┤', sep='')
         print("│ •7 Сохранить список карточек                      │")
@@ -163,7 +161,11 @@ class Library:
                 elif p == 5:
                     # кто книгу взял 15.09.90;
                     if len(self.card_list) > 0:
-                        print(*self.is_delivery_in_1990())
+                        delivered = self.is_delivery_in_1990()
+                        if delivered != None:
+                            print(*delivered)
+                        else:
+                            print('Никто не получал книгу 15 09 1990')
                 elif p == 6:
                     # сколько человек заказывали книги 25.04.90;
                     print(self.is_order_in_1990(), 'человек заказывал(и) книги 25.04.1990.')
@@ -197,8 +199,5 @@ class Library:
             except Exception as e:
                 print('Ошибка: ', e)
     # endregion
-
-
-
 Library = Library()
 Library.wtopa()
