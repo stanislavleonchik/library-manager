@@ -1,1 +1,1 @@
-# An example of library app using Python
+# Example of an application for managing a library using Python
